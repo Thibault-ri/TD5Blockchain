@@ -25,51 +25,35 @@ contract MetaCoin {
 	}
 
 	function getBalanceInEth(address addr) public view returns(uint){
-		return ConvertLib.convert(getBalance(addr),2);
+		return ConvertLib.convert(balanceOf(addr),2);
 	}
 
-	function getBalance(address addr) public view returns(uint) {
+	function balanceOf(address addr) public view returns(uint) {
 		return balances[addr];
 	}
-
-	function name(string memory newname) public view {
-    name=newname;
-  }
-
-  function symbol() public view returns (string){
-    return("N");
-  }
-
-  function decimals() public view returns (uint8){
-    return(6);
-  }
 
   function totalSupply() public view returns (uint256){
     return(10);
   }
 
-  function balanceOf(address _owner) public view returns (uint256 balance){
-    return(100);
-  }
-
   function transfer(address _to, uint256 _value) public returns (bool success){
-    return(True);
+    return(true);
   }
 
   function transferFrom(address _from, address _to, uint256 _value) public returns (bool success)
   {
-    return(True);
+    return(true);
   }
 
   function approve(address _spender, uint256 _value) public returns (bool success){
-    return(True);
+    return(true);
   }
 
   function allowance(address _owner, address _spender) public view returns (uint256 remaining){
     return(10);
   }
 
-  event Transfer(address indexed _from, address indexed _to, uint256 _value);
+
 
   event Approval(address indexed _owner, address indexed _spender, uint256 _value);
 }
