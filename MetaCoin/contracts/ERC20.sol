@@ -1,4 +1,4 @@
-pragma solidity ^0.4.24;
+pragma solidity >=0.4.25 <0.7.0;
 
 import "./IERC20.sol";
 import "./SafeMath.sol";
@@ -59,7 +59,7 @@ contract ERC20 is IERC20 {
   */
   function transfer(address to, uint256 value) public returns (bool) {
     require(value <= _balances[msg.sender]);
-    require(to != address(0));
+    //require(to != address(0));
 
     _balances[msg.sender] = _balances[msg.sender].sub(value);
     _balances[to] = _balances[to].add(value);
@@ -77,7 +77,7 @@ contract ERC20 is IERC20 {
    * @param value The amount of tokens to be spent.
    */
   function approve(address spender, uint256 value) public returns (bool) {
-    require(spender != address(0));
+    //require(spender != address(0));
 
     _allowed[msg.sender][spender] = value;
     emit Approval(msg.sender, spender, value);
@@ -100,7 +100,7 @@ contract ERC20 is IERC20 {
   {
     require(value <= _balances[from]);
     require(value <= _allowed[from][msg.sender]);
-    require(to != address(0));
+    //require(to != address(0));
 
     _balances[from] = _balances[from].sub(value);
     _balances[to] = _balances[to].add(value);
@@ -165,7 +165,7 @@ contract ERC20 is IERC20 {
    * @param amount The amount that will be created.
    */
   function _mint(address account, uint256 amount) internal {
-    require(account != 0);
+    //require(account != 0);
     _totalSupply = _totalSupply.add(amount);
     _balances[account] = _balances[account].add(amount);
     emit Transfer(address(0), account, amount);
@@ -178,7 +178,7 @@ contract ERC20 is IERC20 {
    * @param amount The amount that will be burnt.
    */
   function _burn(address account, uint256 amount) internal {
-    require(account != 0);
+    //require(account != 0);
     require(amount <= _balances[account]);
 
     _totalSupply = _totalSupply.sub(amount);
